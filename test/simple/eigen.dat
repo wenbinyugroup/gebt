@@ -1,0 +1,44 @@
+3 1 1 #dynamic_flag, niter, nstep
+0 0 0 #750 rpm
+0 0 0
+0 0 0 # the first point starts at 2.5''
+0 0 0
+6
+    
+2 1 2 1 0 0 0 0 0 # npoint,nmemb,ncond_pt,nmate, nframe, ncond_mb,ndistrfun, ntimefun, ncurv
+
+1  0.0 0.0 0.0 # coordinates for each point
+2 30.0 0.0 0.0
+
+    
+1 1 2 1 1 0 3 0 # kp_1 kp_2 mate_no1 mate_no2 frame# #divisions, curvature#
+
+
+1    #point conditions
+1 2 3 4 5 6
+0 0 0 0 0 0 # corresponding value
+0 0 0 0 0 0 # corresponding time functions
+0 0 0 0 0 0 # indicate whether it is a follower condition
+
+2
+7 8 9 10 11 12
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+
+
+1 # section No. 1
+ 1.5E-06  0.0E+00  0.0E+00  0.0E+00  0.0E+00  0.0E+00
+ 0.0E+00  0.0E+00  0.0E+00  0.0E+00  0.0E+00  0.0E+00
+ 0.0E+00  0.0E+00  0.0E+00  0.0E+00  0.0E+00  0.0E+00
+ 0.0E+00  0.0E+00  0.0E+00  3.1E-03  0.0E+00  0.0E+00
+ 0.0E+00  0.0E+00  0.0E+00  0.0E+00  4.5E-03  0.0E+00
+ 0.0E+00  0.0E+00  0.0E+00  0.0E+00  0.0E+00  1.8E-05
+
+ 1.6E-05  0.0E+00  0.0E+00  0.0E+00  0.0E+00  0.0E+00
+ 0.0E+00  1.6E-05  0.0E+00  0.0E+00  0.0E+00  0.0E+00
+ 0.0E+00  0.0E+00  1.6E-05  0.0E+00  0.0E+00  0.0E+00
+ 0.0E+00  0.0E+00  0.0E+00  1.3E-06  0.0E+00  0.0E+00
+ 0.0E+00  0.0E+00  0.0E+00  0.0E+00  5.2E-09  0.0E+00
+ 0.0E+00  0.0E+00  0.0E+00  0.0E+00  0.0E+00  1.3E-06
+

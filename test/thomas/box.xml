@@ -1,0 +1,91 @@
+<cross_section name="box">
+  <include>
+    <baseline>baselines</baseline>
+    <!-- <material>db_material</material> -->
+    <!-- <material>materials</material> -->
+    <layup>layups</layup>
+  </include>
+  <analysis>
+    <model>1</model>
+    <!-- <thermal>0</thermal> -->
+    <!-- <trapeze>0</trapeze> -->
+    <!-- <vlasov>0</vlasov> -->
+    <!-- <initial_twist>0.001</initial_twist> -->
+    <!-- <initial_curvature_2></initial_curvature_2>
+    <initial_curvature_3></initial_curvature_3>
+    <oblique_y1></oblique_y1>
+    <oblique_y2></oblique_y2> -->
+  </analysis>
+  <general>
+    <translate>1 0</translate>
+    <!-- <scale></scale>
+    <rotate>30</rotate> -->
+    <mesh_size>0.02</mesh_size>
+    <element_type>linear</element_type>
+  </general>
+  <component name="main" style="2">
+    <segment name="sg1">
+      <baseline>bl1</baseline>
+      <layup direction="right">layup1</layup>
+    </segment>
+    <segment name="sg2">
+      <baseline>bl2</baseline>
+      <layup direction="right">layup2</layup>
+    </segment>
+    <segment name="sg3">
+      <baseline>bl3</baseline>
+      <layup direction="right">layup3</layup>
+    </segment>
+  </component>
+  <!-- <component name="web" depend="main">
+    <segment name="sg_web">
+      <baseline>bl_web</baseline>
+      <layup>layup_web</layup>
+    </segment>
+  </component> -->
+  <component name="fill_left" type="fill" depend="main">
+    <baseline fillside="right">bl_web</baseline>
+    <material>foam</material>
+  </component>
+  <!-- <component name="fill" type="fill" depend="main,web">
+    <location>pweb2</location>
+    <material>foam</material>
+  </component> -->
+  <!-- <component name="fill2" type="fill" depend="main,web">
+    <location>pweb3</location>
+    <material>titanium</material>
+  </component> -->
+  <!-- <component name="web2" depend="main,web">
+    <segment>
+      <baseline>bl_web2</baseline>
+      <layup>layup_web</layup>
+    </segment>
+  </component>
+  <component name="web3" depend="main,web">
+    <segment>
+      <baseline>bl_web3</baseline>
+      <layup>layup_web</layup>
+    </segment>
+  </component> -->
+  <recover>
+    <displacements>0 0 0</displacements>
+    <rotations>1 0 0 0 1 0 0 0 1</rotations>
+    <forces>1 2 3</forces>
+    <moments>4 5 6</moments>
+    <distributed>
+      <forces>0 0 0</forces>
+      <forces_d1>0 0 0</forces_d1>
+      <forces_d2>0 0 0</forces_d2>
+      <forces_d3>0 0 0</forces_d3>
+      <moments>0 0 0</moments>
+      <moments_d1>0 0 0</moments_d1>
+      <moments_d2>0 0 0</moments_d2>
+      <moments_d3>0 0 0</moments_d3>
+    </distributed>
+  </recover>
+  <dehomo measure="strain">
+    <displacements>0 0 0</displacements>
+    <rotations>1 0 0 0 1 0 0 0 1</rotations>
+    <loads>1 1 1 1 0 0</loads>
+  </dehomo>
+</cross_section>

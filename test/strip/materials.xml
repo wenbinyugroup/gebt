@@ -1,0 +1,31 @@
+<materials>
+  <material name="m1" type="isotropic">
+    <density>1</density>
+    <elastic>
+      <e>10e6</e>
+      <nu>0.3</nu>
+    </elastic>
+  </material>
+  <material name="m2" type="orthotropic">
+    <density>1</density>
+    <elastic>
+      <e1>20.59e6</e1>
+      <e2>1.42e6</e2>
+      <e3>1.42e6</e3>
+      <g12>8.7e5</g12>
+      <g13>8.7e5</g13>
+      <g23>6.96e5</g23>
+      <nu12>0.42</nu12>
+      <nu13>0.42</nu13>
+      <nu23>0.42</nu23>
+    </elastic>
+  </material>
+  <lamina name="la1">
+    <material>m1</material>
+    <thickness>0.03</thickness>
+  </lamina>
+  <lamina name="la2">
+    <material>m2</material>
+    <thickness>0.03</thickness>
+  </lamina>
+</materials>

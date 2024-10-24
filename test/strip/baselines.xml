@@ -1,0 +1,4 @@
+<baselines basepoints="basepoints">
+    <baseline name="bl1" type="straight" method="pp">
+        <points>bl,br</points></baseline>
+</baselines>

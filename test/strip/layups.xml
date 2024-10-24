@@ -1,0 +1,11 @@
+<layups>
+	<layup name="layup1">
+		<layer lamina="la1"></layer>
+	</layup>
+	<layup name="layup2">
+		<layer lamina="la2"></layer>
+	</layup>
+	<layup name="layup3">
+		<layer lamina="la2">15</layer>
+	</layup>
+</layups>

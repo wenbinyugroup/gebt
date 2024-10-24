@@ -1,0 +1,20 @@
+<cross_section name="strip">
+  <include>
+    <baseline>baselines</baseline>
+    <material>materials</material>
+    <layup>layups</layup>
+  </include>
+  <general>
+    <translate>0.0 0.0</translate>
+    <scale>1.0</scale>
+    <rotate>0.0</rotate>
+    <mesh_size>0.005</mesh_size>
+    <element_type>linear</element_type>
+  </general>
+  <segments>
+    <segment name="sg1">
+      <baseline>bl1</baseline>
+      <layup>layup1</layup>
+    </segment>
+  </segments>
+</cross_section>

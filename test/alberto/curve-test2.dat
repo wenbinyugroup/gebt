@@ -1,0 +1,31 @@
+0 1 1
+
+2 1 2 1 0 0 0 0 1
+1  0.000000  0.000000  2746.000000          # First point of member
+2  0.000000  2706.008696 -3477.393932       # End point of member
+
+1 1 2 1 1 0 6 1  # 6 elements per member to check curvature position
+
+1 # Conditions on first point
+1 2 3 4 5 6
+0 0 0 0 0 0 # corresponding value
+0 0 0 0 0 0 # corresponding time functions
+0 0 0 0 0 0 # indicate whether it is a follower condition
+
+2 # Conditions at end point. No load to check geometry with curvature
+7 8 9 10 11 12
+0 0 0 0 0 0 # corresponding value
+0 0 0 0 0 0 # corresponding time functions
+0 0 0 0 0 0 # indicate whether it is a follower condition
+
+
+1 # Section 1
+     2.3208609734E-10    6.3056077972E-12   -6.0626588879E-12    1.3880907049E-13   -2.8410154257E-13    2.6479369436E-13
+     6.3056077972E-12    2.2608309895E-09    7.6416061744E-12    3.1122580615E-12   -2.7739295170E-13    1.6330946600E-14
+    -6.0626588879E-12    7.6416061744E-12    8.6507847755E-09   -2.4740505144E-11    1.6293686474E-13   -1.6048125782E-14
+     1.3880907049E-13    3.1122580615E-12   -2.4740505144E-11    6.4783203323E-13   -3.5973691351E-15    1.3976971141E-16
+    -2.8410154257E-13   -2.7739295170E-13    1.6293686474E-13   -3.5973691351E-15    2.3842350224E-13   -8.6889646554E-15
+     2.6479369436E-13    1.6330946600E-14   -1.6048125782E-14    1.3976971141E-16   -8.6889646554E-15    1.1043509414E-14
+
+1 # Member with curvature arc for 3700 radius
+-2.7e-4 0.0 0.0

@@ -1,0 +1,5 @@
+PGM  = gebt
+OBJSc = 
+OBJS90= CPUtime.o GlobalDataFun.o TimeFunction.o PrescribedCondition.o InternalData.o \
+       Preprocess.o Element.o Member.o System.o  Solve.o EigenSolve.o Analysis.o   IO.o main.o      
+OBJSF=ddep.o ma28.o  mc19.o blas.o lapack.o dnaupd.o dneupd.o
