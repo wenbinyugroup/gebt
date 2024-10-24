@@ -31,14 +31,14 @@ set( VERSION_FULL "${VERSION_MAJOR}.${VERSION_MINOR}" )
 # message( ${LAPACK} )
 
 find_package( LAPACK REQUIRED )
-message( ${LAPACK_INCLUDE_DIRS} )
-message( ${LAPACK_LIBRARY_DIRS} )
-message( ${LAPACK_LIBRARIES} )
+message( STATUS ${LAPACK_INCLUDE_DIRS} )
+message( STATUS ${LAPACK_LIBRARY_DIRS} )
+message( STATUS ${LAPACK_LIBRARIES} )
 
 find_package( BLAS REQUIRED )
-message( ${BLAS_INCLUDE_DIRS} )
-message( ${BLAS_LIBRARY_DIRS} )
-message( ${BLAS_LIBRARIES} )
+message( STATUS ${BLAS_INCLUDE_DIRS} )
+message( STATUS ${BLAS_LIBRARY_DIRS} )
+message( STATUS ${BLAS_LIBRARIES} )
 
 
 # MA28 (linear solver)
