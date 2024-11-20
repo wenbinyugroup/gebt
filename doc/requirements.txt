@@ -1,0 +1,8 @@
+sphinx
+sphinx-comments
+sphinx-sitemap
+sphinx-design
+sphinx-gallery
+sphinx-prompt
+sphinx-copybutton
+pydata-sphinx-theme
