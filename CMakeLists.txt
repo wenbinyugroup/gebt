@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.0 FATAL_ERROR)
 
 set( PROJECTNAME "gebt" )
 
+enable_language( Fortran )
+
 project( ${PROJECTNAME} Fortran )
 
 
@@ -11,16 +13,34 @@ set( VERSION_MAJOR 4 )
 set( VERSION_MINOR 8 )
 set( VERSION_FULL "${VERSION_MAJOR}.${VERSION_MINOR}" )
 
-# include(CheckCXXCompilerFlag)
-# CHECK_CXX_COMPILER_FLAG("-std=c++11" COMPILER_SUPPORTS_CXX11)
-# CHECK_CXX_COMPILER_FLAG("-std=c++0x" COMPILER_SUPPORTS_CXX0X)
-# if(COMPILER_SUPPORTS_CXX11)
-# 	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
-# elseif(COMPILER_SUPPORTS_CXX0X)
-# 	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
-# else()
-#   message(STATUS "The compiler ${CMAKE_CXX_COMPILER} has no C++11 support. Please use a different C++ compiler.")
-# endif()
+
+
+# Source files
+# ------------
+set( PROJ_SOURCES 
+  src/ddep.f
+  src/ma28.f
+  src/mc19.f
+  # src/blas.f
+  # src/lapack.f
+  src/arpack.f
+  src/CPUtime.f90
+  src/GlobalDataFun.f90
+  src/TimeFunction.f90
+  src/PrescribedCondition.f90
+  src/InternalData.f90
+  src/Preprocess.f90
+  src/Element.f90
+  src/Member.f90
+  src/System.f90
+  src/Solve.f90
+  src/EigenSolve.f90
+  src/Analysis.f90
+  src/IO.f90
+  src/main.f90
+)
+
+set(EXTRA_LIB)
 
 
 # BLAS and LAPACK
@@ -30,15 +50,23 @@ set( VERSION_FULL "${VERSION_MAJOR}.${VERSION_MINOR}" )
 # find_library( LAPACK NAMES lapack REQUIRED )
 # message( ${LAPACK} )
 
-find_package( LAPACK REQUIRED )
-message( STATUS ${LAPACK_INCLUDE_DIRS} )
-message( STATUS ${LAPACK_LIBRARY_DIRS} )
-message( STATUS ${LAPACK_LIBRARIES} )
+find_package( BLAS )
+if (BLAS_FOUND)
+  message( STATUS "BLAS found: ${BLAS_LIBRARIES}" )
+  list(APPEND EXTRA_LIB ${BLAS_LIBRARIES})
+else()
+  message( STATUS "BLAS not found, using src/blas.f" )
+  list(APPEND PROJ_SOURCES src/blas.f)
+endif()
 
-find_package( BLAS REQUIRED )
-message( STATUS ${BLAS_INCLUDE_DIRS} )
-message( STATUS ${BLAS_LIBRARY_DIRS} )
-message( STATUS ${BLAS_LIBRARIES} )
+find_package( LAPACK )
+if (LAPACK_FOUND)
+  message( STATUS "LAPACK found: ${LAPACK_LIBRARIES}" )
+  list(APPEND EXTRA_LIB ${LAPACK_LIBRARIES})
+else()
+  message( STATUS "LAPACK not found, using src/lapack.f" )
+  list(APPEND PROJ_SOURCES src/lapack.f)
+endif()
 
 
 # MA28 (linear solver)
@@ -74,33 +102,12 @@ message( STATUS ${BLAS_LIBRARIES} )
 #     ${arpack_SOURCE_DIR}/UTIL/zmout.f )
 
 
-# GEBT
-# ----
-set( PROJ_SOURCES 
-  src/ddep.f
-  src/ma28.f
-  src/mc19.f
-  src/arpack.f
-  src/CPUtime.f90
-  src/GlobalDataFun.f90
-  src/TimeFunction.f90
-  src/PrescribedCondition.f90
-  src/InternalData.f90
-  src/Preprocess.f90
-  src/Element.f90
-  src/Member.f90
-  src/System.f90
-  src/Solve.f90
-  src/EigenSolve.f90
-  src/Analysis.f90
-  src/IO.f90
-  src/main.f90
-)
-
 add_executable( ${PROJECTNAME} ${PROJ_SOURCES} )
 # add_executable( ${PROJECTNAME} ${MA28_SOURCES} ${arpackutil_STAT_SRCS} ${arpacksrc_STAT_SRCS} ${PROJ_SOURCES} )
 
-target_link_libraries( ${PROJECTNAME} ${LAPACK_LIBRARIES} ${BLAS_LIBRARIES} )
+if (EXTRA_LIB)
+  target_link_libraries( ${PROJECTNAME} ${EXTRA_LIB} )
+endif()
 
 # Install
 # -------
