@@ -9,9 +9,12 @@ Examples are provided in `examples`.
 
 User manual and other supporting document are in `doc`.
 
+Online documentation: https://wenbinyugroup.github.io/gebt
+
+
+
 
 ## Build from source
-
 
 
 ### Linux
