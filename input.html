@@ -1,0 +1,692 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Inputs &#8212; gebt  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'input';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Outputs" href="output.html" />
+    <link rel="prev" title="Conventions" href="convention.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+<aside class="bd-header-announcement" aria-label="Announcement">
+  <div class="bd-header-announcement__content">Documentation is under construction.</div>
+</aside>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">GEBT</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="install.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="convention.html">
+    Conventions
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="#">
+    Inputs
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="output.html">
+    Outputs
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="bib.html">
+    References
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="install.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="convention.html">
+    Conventions
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="#">
+    Inputs
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="output.html">
+    Outputs
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="bib.html">
+    References
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"></div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Inputs</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="inputs">
+<h1>Inputs<a class="headerlink" href="#inputs" title="Link to this heading">#</a></h1>
+<p>GEBT has a build-in 1D finite element mesh generator, hence it is very easy to prepare the input file for a beam assembly.
+For users to understand the meaning of the input data, we explain each data entry line by line here.</p>
+<p>The first line lists three analysis control parameters arranged as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">analysis_flag</span>  <span class="n">niter</span>  <span class="n">nstep</span>
+</pre></div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">analysis_flag</span></code> can be 0, 1, 2, 3.
+If <code class="docutils literal notranslate"><span class="pre">analysis_flag</span></code> is 0, GEBT will carry out a static analysis.
+If <code class="docutils literal notranslate"><span class="pre">analysis_flag</span></code> is 1, GEBT will carry out a steady state analysis (i.e., neglecting the time derivatives in the formulation).
+If <code class="docutils literal notranslate"><span class="pre">analysis_flag</span></code> is 2, GEBT will carry out a time marching to obtain the transient time history of the dynamic response.
+If <code class="docutils literal notranslate"><span class="pre">analysis_flag</span></code> is 3, GEBT will carry out an eigenvalue analysis to obtain the frequencies and mode shapes.
+<code class="docutils literal notranslate"><span class="pre">niter</span></code> is the maximum number of iterations for the nonlinear analysis.
+If <code class="docutils literal notranslate"><span class="pre">niter</span></code> is equal to 1, GEBT will compute results corresponding to a linear theory.
+<code class="docutils literal notranslate"><span class="pre">nstep</span></code> is the number of steps.
+For static analysis, it can be used to increase the load gradually to help the convergence.
+For dynamic analysis, it is the number of time steps.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">analysis_flag</span></code> is not equal to 0, the next two lines will be used to provide the angular velocity of the global frame a and the linear velocity of the starting pointing of the first member, and their corresponding time functions.
+They are arranged as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>   <span class="n">w1</span>     <span class="n">w2</span>     <span class="n">w3</span>
+<span class="n">tf_w1</span>  <span class="n">tf_w2</span>  <span class="n">tf_w3</span>
+   <span class="n">v1</span>     <span class="n">v2</span>     <span class="n">v3</span>
+<span class="n">tf_v1</span>  <span class="n">tf_v2</span>  <span class="n">tf_v3</span>
+</pre></div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">w1</span></code>, <code class="docutils literal notranslate"><span class="pre">w2</span></code>, <code class="docutils literal notranslate"><span class="pre">w3</span></code>, <code class="docutils literal notranslate"><span class="pre">v1</span></code>, <code class="docutils literal notranslate"><span class="pre">v2</span></code>, <code class="docutils literal notranslate"><span class="pre">v3</span></code> are real numbers denoting the magnitude, while <code class="docutils literal notranslate"><span class="pre">tf_w1</span></code>, <code class="docutils literal notranslate"><span class="pre">tf_w2</span></code>, <code class="docutils literal notranslate"><span class="pre">tf_w3</span></code>, <code class="docutils literal notranslate"><span class="pre">tf_v1</span></code>, <code class="docutils literal notranslate"><span class="pre">tf_v2</span></code>, <code class="docutils literal notranslate"><span class="pre">tf_v3</span></code> are integer numbers denoting the number of the corresponding time functions.
+The values of these velocities are equal to the magnitude multiplied by values evaluated by the corresponding time function.
+The unit of angular velocity will be rad/second.
+If inch if chosen as the unit of length, the unit of linear velocity will be inch/second.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">analysis_flag</span></code> is equal to 3, the next line will be used to provide an integer <code class="docutils literal notranslate"><span class="pre">nev</span></code> for the total number of frequencies and corresponding mode shapes to be extracted from the eigenvalue analysis.</p>
+<p>The next line lists nine integers arranged as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nkp</span>  <span class="n">nmemb</span>  <span class="n">ncond_pt</span>  <span class="n">nmate</span>  <span class="n">nframe</span>  <span class="n">ncond_mb</span>  <span class="n">ndistr</span>  <span class="n">ntimefun</span>  <span class="n">ncurv</span>
+</pre></div>
+</div>
+<p>where</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">nkp</span></code> is the total number of key points,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nmemb</span></code> the total number of members,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ncond_pt</span></code> the total number of points having prescribed conditions (including boundary conditions),</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nmate</span></code> the total number of cross-sections,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nframe</span></code> the total number of frames,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ncond_mb</span></code> the total number of members having prescribed, distributed loadings,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ndistr</span></code> the total number of functions used to approximate the distributed loads,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ntimefun</span></code> the total number of time functions, <code class="docutils literal notranslate"><span class="pre">ncurv</span></code> total number of initial curvature/twist sets including <span class="math notranslate nohighlight">\(\boldsymbol { k } _ { 1 } , \boldsymbol { k } _ { 2 } , \boldsymbol { k } _ { 3 }\)</span></p></li>
+</ul>
+<p>The next nkp lines are the coordinates for each key point arranged as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">kp_no</span>  <span class="n">x1</span>  <span class="n">x2</span>  <span class="n">x3</span>
+</pre></div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">kp_no</span></code> is an integer representing the unique number assigned to each key point and <code class="docutils literal notranslate"><span class="pre">x1</span></code>, <code class="docutils literal notranslate"><span class="pre">x2</span></code>, <code class="docutils literal notranslate"><span class="pre">x3</span></code> are three real numbers describing the location <span class="math notranslate nohighlight">\(( x _ { 1 } , x _ { 2 } , x _ { 3 } )\)</span> of the point.
+Although the arrangement of <code class="docutils literal notranslate"><span class="pre">kp_no</span></code> is not necessary to be consecutive, every point starting from 1 to <code class="docutils literal notranslate"><span class="pre">nkp</span></code> should be present.</p>
+<p>The next <code class="docutils literal notranslate"><span class="pre">nmemb</span></code> lines list eight integers for each member.
+They are arranged as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">memb_no</span>  <span class="n">kp_1</span>  <span class="n">kp_2</span>  <span class="n">mate_no1</span>  <span class="n">mate_no2</span>  <span class="n">frame_no</span>  <span class="n">ndiv</span>  <span class="n">curv_no</span>
+</pre></div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">memb_no</span></code> is the number of member and <code class="docutils literal notranslate"><span class="pre">kp_1</span></code> is the starting point and <code class="docutils literal notranslate"><span class="pre">kp_2</span></code> is the ending point of the member. <code class="docutils literal notranslate"><span class="pre">mate_no1</span></code> is the cross-section number of the starting point of the member, <code class="docutils literal notranslate"><span class="pre">mate_no2</span></code> is the cross-section number of the ending point of the member.
+If the member has a uniform cross-section, these two numbers will be the same.
+Two different cross-sections can be assigned to one member, which implicitly assumes that the sectional properties are linearly varying along the length.
+<code class="docutils literal notranslate"><span class="pre">frame_no</span></code> is the frame number of the starting point of the member.
+If it is set to be 0, then the frame is the same as the global frame, i.e., <span class="math notranslate nohighlight">\(b_i = a_i\)</span>.
+<code class="docutils literal notranslate"><span class="pre">ndiv</span></code> is the total number of elements you want to divide this member (the element is uniformly divided into <code class="docutils literal notranslate"><span class="pre">ndiv</span></code> segments), <code class="docutils literal notranslate"><span class="pre">curv_no</span></code> is the initial curvature/twist set number (0 means a straight member).
+Although the arrangement of <code class="docutils literal notranslate"><span class="pre">memb_no</span></code> is not necessary to be consecutive, every member starting from 1 to <code class="docutils literal notranslate"><span class="pre">nmemb</span></code> should be present.</p>
+<p>The next <code class="docutils literal notranslate"><span class="pre">ncond_pt</span></code> blocks define the point conditions of prescribed displacements, rotations, forces, or moments.
+They are arranged as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">kp_no</span>
+<span class="n">dof_1</span>  <span class="n">dof_2</span>  <span class="n">dof_3</span>  <span class="n">dof_4</span>  <span class="n">dof_5</span>  <span class="n">dof_6</span>
+<span class="n">val_1</span>  <span class="n">val_2</span>  <span class="n">val_3</span>  <span class="n">val_4</span>  <span class="n">val_5</span>  <span class="n">val_6</span>
+ <span class="n">tf_1</span>   <span class="n">tf_2</span>   <span class="n">tf_3</span>   <span class="n">tf_4</span>   <span class="n">tf_5</span>   <span class="n">tf_6</span>
+ <span class="n">ff_1</span>   <span class="n">ff_2</span>   <span class="n">ff_3</span>   <span class="n">ff_4</span>   <span class="n">ff_5</span>   <span class="n">ff_6</span>
+</pre></div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">kp_no</span></code> is the key point where the prescribed condition is applied, <code class="docutils literal notranslate"><span class="pre">dof_i</span></code> (<code class="docutils literal notranslate"><span class="pre">i</span></code> = 1, 2, …, 6) are the prescribed degrees of freedom and they are six integers with values ranging from 1 to 12.
+<code class="docutils literal notranslate"><span class="pre">val_i</span></code> (<code class="docutils literal notranslate"><span class="pre">i</span></code> = 1, 2, …, 6) are six real numbers for the prescribed values for the corresponding degree of freedom.
+<code class="docutils literal notranslate"><span class="pre">tf_i</span></code> (<code class="docutils literal notranslate"><span class="pre">i</span></code> = 1, 2, …, 6) are six integer numbers for the corresponding number of the time function.
+<code class="docutils literal notranslate"><span class="pre">ff_i</span></code> (<code class="docutils literal notranslate"><span class="pre">i</span></code> = 1, 2, …, 6) are six integer numbers (could be either 0 or 1) indicating whether the corresponding prescribed quantity is a follower quantity or not.
+If it is a follower, then the flag is set to be 1.
+Otherwise, it is 0.
+We assume that only forces/moments can be follower quantities and if there is a follower component at the point, GEBT assumes that the first three prescribed degrees of freedom can only be either 7, 8, 9 or 10, 11, 12.
+If the assumption is too restrictive, please let the author know.
+The prescribed value is calculated as val i multiplying the corresponding time function value.
+For example if at point 2, we applied follower forces and dead moments with forces are constant with respect to time and moments are prescribed by time function 1 (defined later), then we have the following</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="mi">2</span>
+ <span class="mi">7</span>   <span class="mi">8</span>   <span class="mi">9</span>  <span class="mi">10</span>  <span class="mi">11</span>  <span class="mi">12</span>
+<span class="n">F1</span>  <span class="n">F2</span>  <span class="n">F3</span>  <span class="n">M1</span>  <span class="n">M2</span>  <span class="n">M3</span>
+ <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">1</span>   <span class="mi">1</span>   <span class="mi">1</span>
+ <span class="mi">1</span>   <span class="mi">1</span>   <span class="mi">1</span>   <span class="mi">0</span>   <span class="mi">0</span>   <span class="mi">0</span>
+</pre></div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">F1</span></code>, <code class="docutils literal notranslate"><span class="pre">F2</span></code>, <code class="docutils literal notranslate"><span class="pre">F3</span></code>, <code class="docutils literal notranslate"><span class="pre">M1</span></code>, <code class="docutils literal notranslate"><span class="pre">M2</span></code>, <code class="docutils literal notranslate"><span class="pre">M3</span></code> are corresponding prescribed values, which could be zero, implying no external forces applied at this point.
+In a beam assembly, the key points can be further classified as boundary points or connection points.
+If a point is connected to only one member, it is a boundary point and six boundary conditions must be applied to this point.
+If a point is connected to more than one member, it is a connection point.
+The displacements/rotations of this point can be prescribed.
+Concentrated forces/moments can also be applied to the connection point.</p>
+<p>The next <code class="docutils literal notranslate"><span class="pre">nmate</span></code> blocks provide the structural and inertial properties for each cross-section.
+First for the flexibility matrix, described using 36 real numbers arranged as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mate_no</span>
+<span class="n">S_11</span>  <span class="n">S_12</span>  <span class="n">S_13</span>  <span class="n">S_14</span>  <span class="n">S_15</span>  <span class="n">S_16</span>
+<span class="n">S_12</span>  <span class="n">S_22</span>  <span class="n">S_23</span>  <span class="n">S_24</span>  <span class="n">S_25</span>  <span class="n">S_26</span>
+<span class="n">S_13</span>  <span class="n">S_23</span>  <span class="n">S_33</span>  <span class="n">S_34</span>  <span class="n">S_35</span>  <span class="n">S_36</span>
+<span class="n">S_14</span>  <span class="n">S_24</span>  <span class="n">S_34</span>  <span class="n">S_44</span>  <span class="n">S_45</span>  <span class="n">S_46</span>
+<span class="n">S_15</span>  <span class="n">S_25</span>  <span class="n">S_35</span>  <span class="n">S_45</span>  <span class="n">S_55</span>  <span class="n">S_56</span>
+<span class="n">S_16</span>  <span class="n">S_26</span>  <span class="n">S_36</span>  <span class="n">S_46</span>  <span class="n">S_56</span>  <span class="n">S_66</span>
+</pre></div>
+</div>
+<p>These values are defined in Eq. (3) and can be directly copied from VABS output file.
+If one wants to input stiffness matrix instead, the user needs to use <code class="docutils literal notranslate"><span class="pre">preprocess.stiff.f90</span></code> to replace <code class="docutils literal notranslate"><span class="pre">preprocess.f90</span></code> and recompile the code.
+If <code class="docutils literal notranslate"><span class="pre">analysis_flag</span></code> is not equal to 0, we also need to provide inertial properties represented by the mass matrix which is arranged as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">m_11</span>  <span class="n">m_12</span>  <span class="n">m_13</span>  <span class="n">m_14</span>  <span class="n">m_15</span>  <span class="n">m_16</span>
+<span class="n">m_12</span>  <span class="n">m_22</span>  <span class="n">m_23</span>  <span class="n">m_24</span>  <span class="n">m_25</span>  <span class="n">m_26</span>
+<span class="n">m_13</span>  <span class="n">m_23</span>  <span class="n">m_33</span>  <span class="n">m_34</span>  <span class="n">m_35</span>  <span class="n">m_36</span>
+<span class="n">m_14</span>  <span class="n">m_24</span>  <span class="n">m_34</span>  <span class="n">m_44</span>  <span class="n">m_45</span>  <span class="n">m_46</span>
+<span class="n">m_15</span>  <span class="n">m_25</span>  <span class="n">m_35</span>  <span class="n">m_45</span>  <span class="n">m_55</span>  <span class="n">m_56</span>
+<span class="n">m_16</span>  <span class="n">m_26</span>  <span class="n">m_36</span>  <span class="n">m_46</span>  <span class="n">m_56</span>  <span class="n">m_66</span>
+</pre></div>
+</div>
+<p>These values are defined in Eq. (4) and can be directly copied from VABS output file.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">nframe</span></code> &gt; 0, the next nframe blocks provide the direction cosine matrix for each member, which are described using nine real numbers arranged as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">frame_no</span>
+<span class="n">C11</span>  <span class="n">C12</span>  <span class="n">C13</span>
+<span class="n">C21</span>  <span class="n">C22</span>  <span class="n">C23</span>
+<span class="n">C31</span>  <span class="n">C32</span>  <span class="n">C33</span>
+</pre></div>
+</div>
+<p>These values are defined in Eq. (1).</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">ncond_mb</span></code> &gt; 0, the next <code class="docutils literal notranslate"><span class="pre">ncond_mb</span></code> blocks define members having prescribed loads.
+They are arranged as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">memb_no</span>
+ <span class="n">dn_1</span>   <span class="n">dn_2</span>   <span class="n">dn_3</span>   <span class="n">dn_4</span>   <span class="n">dn_5</span>   <span class="n">dn_6</span>
+<span class="n">val_1</span>  <span class="n">val_2</span>  <span class="n">val_3</span>  <span class="n">val_4</span>  <span class="n">val_5</span>  <span class="n">val_6</span>
+ <span class="n">tf_1</span>   <span class="n">tf_2</span>   <span class="n">tf_3</span>   <span class="n">tf_4</span>   <span class="n">tf_5</span>   <span class="n">tf_6</span>
+ <span class="n">ff_1</span>   <span class="n">ff_2</span>   <span class="n">ff_3</span>   <span class="n">ff_4</span>   <span class="n">ff_5</span>   <span class="n">ff_6</span>
+</pre></div>
+</div>
+<p>where</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">memb_no</span></code> is the member where the prescribed condition is applied,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dn_i</span></code> (<code class="docutils literal notranslate"><span class="pre">i</span></code> = 1, 2, …, 6) are the corresponding number of distributed functions.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">val_i</span></code> (<code class="docutils literal notranslate"><span class="pre">i</span></code> = 1, 2, …, 6) are six real numbers for the prescribed values arranged corresponding to <span class="math notranslate nohighlight">\(f _ { 1 }\)</span>, <span class="math notranslate nohighlight">\(f _ { 2 }\)</span>, <span class="math notranslate nohighlight">\(f _ { 3 }\)</span>, <span class="math notranslate nohighlight">\(m _ { 1 }\)</span>, <span class="math notranslate nohighlight">\(m _ { 2 }\)</span>, <span class="math notranslate nohighlight">\(m _ { 3 }\)</span> with <span class="math notranslate nohighlight">\(f _ { 1 }\)</span>, <span class="math notranslate nohighlight">\(f _ { 2 }\)</span>, <span class="math notranslate nohighlight">\(f _ { 3 }\)</span> as three components of the distribution force and <span class="math notranslate nohighlight">\(m _ { 1 }\)</span>, <span class="math notranslate nohighlight">\(m _ { 2 }\)</span>, <span class="math notranslate nohighlight">\(m _ { 3 }\)</span> as three moments of the distribution moment.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tf_i</span></code> (<code class="docutils literal notranslate"><span class="pre">i</span></code> = 1, 2, …, 6) are six integer numbers for the corresponding number of the time function.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ff_i</span></code> (<code class="docutils literal notranslate"><span class="pre">i</span></code> = 1, 2, …, 6) are six integer numbers (could be either 0 or 1) indicating whether the corresponding prescribed quantity is a follower quantity or not.
+If it is a follower, then the flag is set to be 1.
+Otherwise, it is 0.
+The prescribed value is calculated as <code class="docutils literal notranslate"><span class="pre">val_i</span></code> multiplying the corresponding time function value and multiplying the corresponding distribution function value.</p></li>
+</ul>
+<p>If <code class="docutils literal notranslate"><span class="pre">ndistr</span></code>&gt; 0, the next <code class="docutils literal notranslate"><span class="pre">ndistr</span></code> blocks provide the distributed load functions.
+They are arranged as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fun_no</span>
+<span class="n">c0</span>  <span class="n">c1</span>  <span class="n">c2</span>  <span class="n">c3</span>  <span class="n">c4</span>  <span class="n">c5</span>
+</pre></div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">c_i</span></code> (<code class="docutils literal notranslate"><span class="pre">i</span></code> = 0, …, 5) corresponds to the first five coefficients of the Chebychev polynomials used to approximate the given load function.
+The function is calculated as <span class="math notranslate nohighlight">\(f(s) = \sum_{i=0}^{5} c_{i} T_{i}(s)\)</span>, where <span class="math notranslate nohighlight">\(s\)</span> is the length along the member and <span class="math notranslate nohighlight">\(T _ { 0 } = 1\)</span>, <span class="math notranslate nohighlight">\(T _ { 1 } = s\)</span>, <span class="math notranslate nohighlight">\(T _ { 2 } = 2 s ^ { 2 } - 1\)</span>, <span class="math notranslate nohighlight">\(T _ { 3 } = 4 s ^ { 3 } - 3 s\)</span>, <span class="math notranslate nohighlight">\(T _ { 4 } = 8 s ^ { 4 } - 8 s ^ { 2 } + 1\)</span>, <span class="math notranslate nohighlight">\(T _ { 5 } = 16 s ^ { 5 } - 20 s ^ { 3 } + 5 s\)</span>.
+For example, for a linearly distributed load <span class="math notranslate nohighlight">\(f ( s ) = 1000 + 500s\)</span>, we need to provide the input as <code class="docutils literal notranslate"><span class="pre">1000</span> <span class="pre">500</span> <span class="pre">0</span> <span class="pre">0</span> <span class="pre">0</span> <span class="pre">0</span></code>.
+Here GEBT assumes all given functions can be approximated by the Chebychev polynomials up to the fifth order.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">ncurv</span></code>&gt; 0, the next <code class="docutils literal notranslate"><span class="pre">ncurv</span></code> blocks provide the initial curvatures and twist.
+They are arranged as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curv_no</span>
+<span class="n">k1</span>  <span class="n">k2</span>  <span class="n">k3</span>
+</pre></div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">k1</span></code> is the initial twist, <code class="docutils literal notranslate"><span class="pre">k2</span></code> is the initial curvature around <span class="math notranslate nohighlight">\(x _ { 2 }\)</span> direction, and <code class="docutils literal notranslate"><span class="pre">k3</span></code> is the initial curvature around <span class="math notranslate nohighlight">\(x _ { 3 }\)</span> direction.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">ntimefun</span></code>&gt; 0 or <code class="docutils literal notranslate"><span class="pre">analysis_flag</span></code>=2, the next line lists two numbers for the simulation range arranged as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">starting_time</span>  <span class="n">ending_time</span>
+</pre></div>
+</div>
+<p>and the next <code class="docutils literal notranslate"><span class="pre">ntimefun</span></code> blocks define the time functions which are arranged as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fun_no</span>
+<span class="n">fun_type</span>
+<span class="n">ts</span>  <span class="n">te</span>
+<span class="p">[</span><span class="n">fun_block</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>where</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fun_no</span></code> is the time function number,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fun_type</span></code> is the time function type, and</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ts</span></code>, <code class="docutils literal notranslate"><span class="pre">te</span></code> are the starting and ending time of function definition specifically.</p></li>
+</ul>
+<p>Currently, user can define two types of time functions.
+If <code class="docutils literal notranslate"><span class="pre">fun_type</span></code> is 0, it is a user defined as piecewise linear function based on functional values provided for different time instances.
+The <code class="docutils literal notranslate"><span class="pre">[fun_block]</span></code> is arranged as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">n</span>   
+<span class="n">t1</span>  <span class="n">f1</span>   
+<span class="n">t2</span>  <span class="n">f2</span>   
+<span class="o">...</span>   
+<span class="n">tn</span>  <span class="n">fn</span>
+</pre></div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">n</span></code> is the number of entries needed for this time function.
+The time entries <span class="math notranslate nohighlight">\(t _ { i }\)</span> is arranged in an increasing fashion.
+That is, we have <span class="math notranslate nohighlight">\(t _ { 2 } &gt; t _ { 1 }\)</span>, <span class="math notranslate nohighlight">\(t _ { 3 } &gt; t _ { 2 }\)</span>, and etc.
+The time function is assumed to be piecewise linear defined by <span class="math notranslate nohighlight">\(t _ { i }\)</span> and <span class="math notranslate nohighlight">\(f _ { i }\)</span>.
+If <span class="math notranslate nohighlight">\(t &lt; t _ { 1 }\)</span>, the function will remain the same as <span class="math notranslate nohighlight">\(f _ { 1 }\)</span>.
+If <span class="math notranslate nohighlight">\(t &gt; t _ { n }\)</span>, the function will remain the same as <span class="math notranslate nohighlight">\(f _ { n }\)</span>.
+Note this type of time functions, simulation time, and load steps can be used to control the load increment in static analysis.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">fun_type</span></code> is 1, the time function is defined as a summation of a series of harmonics as follows</p>
+<div class="math notranslate nohighlight">
+\[
+f ( t ) = \sum _ { i = 1 } ^ { N } h _ { i } ( t ) = \sum _ { i = 1 } ^ { N } a _ { i } \sin 2 \pi ( t / T _ { i } + \phi _ { i } )\tag{5}
+\]</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">fun_block</span></code> is arranged as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">n</span>
+<span class="n">a_1</span>  <span class="n">T_1</span>  <span class="n">phi_1</span>
+<span class="n">a_2</span>  <span class="n">T_2</span>  <span class="n">phi_2</span>
+<span class="o">...</span>
+<span class="n">a_n</span>  <span class="n">T_n</span>  <span class="n">phi_n</span>
+</pre></div>
+</div>
+<p>where</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">a_i</span></code> is the magnitude,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">T_i</span></code> is the period, and</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">phi_i</span></code> is the phase.</p></li>
+</ul>
+<p>The input file should be ended with a blank line to avoid any possible incompatibility of different computer systems.
+The input file can be given any name as long as the total number of the characters of the name including extension is not more than 256.
+You are suggested to use a unique extension say get for you to identify such files with GEBT.
+For the convenience of the user to identify mistakes in the input file, all the inputs are echoed in a file named <code class="docutils literal notranslate"><span class="pre">input_file_name.ech</span></code>.<br />
+Error messages are also written at the end of <code class="docutils literal notranslate"><span class="pre">input_file_name.ech</span></code>.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">analysis_flag</span></code>=2, a file named <code class="docutils literal notranslate"><span class="pre">input_file_name.ini</span></code> should also exist in the same directory.
+If there are a total of <code class="docutils literal notranslate"><span class="pre">nelem</span></code> elements in the structure, this file contains 2 × <code class="docutils literal notranslate"><span class="pre">nelem</span></code> lines with the first <code class="docutils literal notranslate"><span class="pre">nelem</span></code> lines providing the initial positions and rotations <span class="math notranslate nohighlight">\(( u _ { 1 } \quad u _ { 2 } \quad u _ { 3 } \quad \theta _ { 1 } \quad \theta _ { 2 } \quad \theta _ { 3 } )\)</span> for each element and the next <code class="docutils literal notranslate"><span class="pre">nelem</span></code> lines providing the corresponding derivatives <span class="math notranslate nohighlight">\(( { \dot { u } } _ { 1 } { \dot { u } } _ { 2 } { \dot { u } } _ { 3 } { \dot { \theta } } _ { 1 } { \dot { \theta } } _ { 2 } { \dot { \theta } } _ { 3 } )\)</span> for each element.</p>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="convention.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Conventions</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="output.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Outputs</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/input.md.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024, Wenbin Yu.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
