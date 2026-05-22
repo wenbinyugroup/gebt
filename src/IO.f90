@@ -126,8 +126,8 @@ INTEGER::tmp_no ! a temporary integer
 
 !Get the input file name from the command line
 !------------------------------------------------------------------------------
-CALL GETARG(1,inp_name)
-IF(TRIM(inp_name)=='') THEN
+CALL GET_COMMAND_ARGUMENT(1,inp_name)
+IF(LEN_TRIM(inp_name)==0) THEN
  error='Please provide an input file name, executing as GEBT input_file_name'
  RETURN
 ENDIF

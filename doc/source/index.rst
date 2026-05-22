@@ -50,6 +50,7 @@ The most recent version of GEBT, GEBT 4.0, has the following functionalities:
    :maxdepth: 2
    :caption: Contents:
 
+   install
    convention
    input
    output

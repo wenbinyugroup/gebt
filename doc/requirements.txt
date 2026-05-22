@@ -6,3 +6,4 @@ sphinx-gallery
 sphinx-prompt
 sphinx-copybutton
 pydata-sphinx-theme
+myst-parser

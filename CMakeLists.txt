@@ -1,29 +1,20 @@
-cmake_minimum_required(VERSION 3.0 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.10)
 
 set( PROJECTNAME "gebt" )
 
-enable_language( Fortran )
-
 project( ${PROJECTNAME} Fortran )
-
-
-# set( CMAKE_CXX_STANDARD 11 )
 
 set( VERSION_MAJOR 4 )
 set( VERSION_MINOR 8 )
 set( VERSION_FULL "${VERSION_MAJOR}.${VERSION_MINOR}" )
 
-
-
 # Source files
 # ------------
-set( PROJ_SOURCES 
+# MA28/MC19/ddep: Harwell sparse solver — no standard system package.
+set( PROJ_SOURCES
   src/ddep.f
   src/ma28.f
   src/mc19.f
-  # src/blas.f
-  # src/lapack.f
-  src/arpack.f
   src/CPUtime.f90
   src/GlobalDataFun.f90
   src/TimeFunction.f90
@@ -41,72 +32,73 @@ set( PROJ_SOURCES
 )
 
 set(EXTRA_LIB)
+set(BLAS_LAPACK_LIB)
 
+# Prefer static libraries (.a) over import libraries (.dll.a) so that
+# -static linking produces a self-contained executable.
+if (WIN32)
+  set(CMAKE_FIND_LIBRARY_SUFFIXES .a .dll.a)
+endif()
 
 # BLAS and LAPACK
 # ---------------
-# find_library( BLAS NAMES blas REQUIRED )
-# message( ${BLAS} )
-# find_library( LAPACK NAMES lapack REQUIRED )
-# message( ${LAPACK} )
-
+# Try find_package first (works for shared libs and Linux system BLAS).
+# On Windows/MinGW with static OpenBLAS, find_package may fail; fall back
+# to find_library for libopenblas (which provides both BLAS and LAPACK).
 find_package( BLAS )
-if (BLAS_FOUND)
-  message( STATUS "BLAS found: ${BLAS_LIBRARIES}" )
-  list(APPEND EXTRA_LIB ${BLAS_LIBRARIES})
-else()
-  message( STATUS "BLAS not found, using src/blas.f" )
-  list(APPEND PROJ_SOURCES src/blas.f)
-endif()
-
 find_package( LAPACK )
-if (LAPACK_FOUND)
+if (BLAS_FOUND AND LAPACK_FOUND)
+  message( STATUS "BLAS found: ${BLAS_LIBRARIES}" )
   message( STATUS "LAPACK found: ${LAPACK_LIBRARIES}" )
-  list(APPEND EXTRA_LIB ${LAPACK_LIBRARIES})
+  set(BLAS_LAPACK_LIB ${BLAS_LIBRARIES} ${LAPACK_LIBRARIES})
 else()
-  message( STATUS "LAPACK not found, using src/lapack.f" )
-  list(APPEND PROJ_SOURCES src/lapack.f)
+  find_library( OPENBLAS_LIBRARY NAMES openblas )
+  if (OPENBLAS_LIBRARY)
+    message( STATUS "BLAS/LAPACK: using OpenBLAS ${OPENBLAS_LIBRARY}" )
+    set(BLAS_LAPACK_LIB ${OPENBLAS_LIBRARY})
+  else()
+    message( STATUS "BLAS/LAPACK not found, using bundled src/archive/blas.f + src/archive/lapack.f" )
+    list(APPEND PROJ_SOURCES src/archive/blas.f src/archive/lapack.f)
+  endif()
 endif()
 
-
-# MA28 (linear solver)
-# --------------------
-# set( MA28_SOURCES 
-#   src/ddep.f
-#   src/ma28.f
-#   src/mc19.f
-# )
-
-
-# ARPACK (eigen solver)
-# ---------------------
-# set(arpack_SOURCE_DIR arpack-ng)
-
-# include_directories( ${CMAKE_SOURCE_DIR}/include )
-# file(GLOB arpacksrc_STAT_SRCS ${arpack_SOURCE_DIR}/dbgini.f ${arpack_SOURCE_DIR}/staini.f ${arpack_SOURCE_DIR}/SRC/*.f)
-
-# set(arpackutil_STAT_SRCS
-#     ${arpack_SOURCE_DIR}/UTIL/icnteq.f
-#     ${arpack_SOURCE_DIR}/UTIL/icopy.f
-#     ${arpack_SOURCE_DIR}/UTIL/iset.f
-#     ${arpack_SOURCE_DIR}/UTIL/iswap.f
-#     ${arpack_SOURCE_DIR}/UTIL/ivout.f
-#     ${arpack_SOURCE_DIR}/UTIL/second_NONE.f
-#     ${arpack_SOURCE_DIR}/UTIL/svout.f
-#     ${arpack_SOURCE_DIR}/UTIL/smout.f
-#     ${arpack_SOURCE_DIR}/UTIL/dvout.f
-#     ${arpack_SOURCE_DIR}/UTIL/dmout.f
-#     ${arpack_SOURCE_DIR}/UTIL/cvout.f
-#     ${arpack_SOURCE_DIR}/UTIL/cmout.f
-#     ${arpack_SOURCE_DIR}/UTIL/zvout.f
-#     ${arpack_SOURCE_DIR}/UTIL/zmout.f )
+# ARPACK (eigenvalue solver)
+# --------------------------
+# Prefer system arpack-ng library.  Fall back to bundled src/archive/arpack.f.
+find_library( ARPACK_LIBRARY NAMES arpack )
+if (ARPACK_LIBRARY)
+  message( STATUS "ARPACK: using system library ${ARPACK_LIBRARY}" )
+  list(APPEND EXTRA_LIB ${ARPACK_LIBRARY})
+else()
+  message( STATUS "ARPACK not found, using bundled src/archive/arpack.f" )
+  list(APPEND PROJ_SOURCES src/archive/arpack.f)
+endif()
 
 
 add_executable( ${PROJECTNAME} ${PROJ_SOURCES} )
-# add_executable( ${PROJECTNAME} ${MA28_SOURCES} ${arpackutil_STAT_SRCS} ${arpacksrc_STAT_SRCS} ${PROJ_SOURCES} )
+
+# Compiler-specific flags (gfortran)
+# -----------------------------------
+if (CMAKE_Fortran_COMPILER_ID STREQUAL "GNU")
+  # Bundled MA28/MC19/ddep use legacy Fortran constructs; bundled arpack.f
+  # (if used) has rank mismatches.  Only -fallow-argument-mismatch is needed
+  # when arpack.f is compiled; harmless otherwise.
+  target_compile_options(${PROJECTNAME} PRIVATE -fallow-argument-mismatch -std=legacy)
+  # Static-link gfortran/libgcc runtimes to avoid a UCRT heap conflict
+  # that corrupts TRIM() temporaries (observed with gfortran 16 / MinGW-w64).
+  # Do NOT use full -static: it conflicts with OpenMP in OpenBLAS.
+  target_link_options(${PROJECTNAME} PRIVATE -static-libgfortran -static-libgcc)
+  if (WIN32)
+    target_link_options(${PROJECTNAME} PRIVATE -Wl,--stack,67108864)
+  endif()
+endif()
 
 if (EXTRA_LIB)
-  target_link_libraries( ${PROJECTNAME} ${EXTRA_LIB} )
+  # Link order matters for static libs: arpack depends on BLAS/LAPACK,
+  # so BLAS/LAPACK must come last.
+  target_link_libraries( ${PROJECTNAME} ${EXTRA_LIB} ${BLAS_LAPACK_LIB} gomp)
+elseif (BLAS_LAPACK_LIB)
+  target_link_libraries( ${PROJECTNAME} ${BLAS_LAPACK_LIB} gomp)
 endif()
 
 # Install

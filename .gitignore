@@ -1,5 +1,9 @@
 build_msvc/
+build_ifx/
+build/
+local/
 _temp/
+doc/build/
 
 # Prerequisites
 *.d

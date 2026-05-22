@@ -1,32 +1,76 @@
 # GEBT
 
-Geometrically Exact Beam Theory
+Geometrically Exact Beam Theory solver.
 
+Examples are provided in `examples/`.
 
-## Getting start
+User manuals and supporting documents are in `doc/`.
 
-Examples are provided in `examples`.
+Online documentation: <https://wenbinyugroup.github.io/gebt>
 
-User manual and other supporting document are in `doc`.
+## Build From Source
 
-Online documentation: https://wenbinyugroup.github.io/gebt
+### Requirements
 
-
-
-
-## Build from source
-
+- CMake 3.10 or newer
+- A Fortran compiler
+  - Primary: `gfortran`
+  - Fallback on Windows: Intel `ifx`
+- MA28/MC19/ddep are bundled in `src/`
+- BLAS/LAPACK/ARPACK
+  - Preferred: system libraries
+  - Fallback: bundled `src/archive/blas.f`, `src/archive/lapack.f`, `src/archive/arpack.f`
 
 ### Linux
 
-To compile the code, you need to use the makefile in the bin directory.
+Build with CMake:
 
+```sh
+cmake -B build .
+cmake --build build
+```
 
-### Windows
+If system BLAS/LAPACK/ARPACK are installed in standard locations, CMake will
+link them automatically. Otherwise it falls back to the bundled Fortran
+sources in `src/archive/`.
 
-- Download and install Visual Studio
-- Download and install [Intel Fortran compiler](https://www.intel.com/content/www/us/en/developer/tools/oneapi/hpc-toolkit-download.html?packages=fortran-essentials&fortran-essentials-os=windows&fortran-essentials-win=offline)
-- Build the code
-  - Open Intel oneAPI command prompt
-  - Go the root directory of gebt
-  - Run `.\tools\build_msvc.bat`
+### Windows with gfortran (recommended)
+
+Install:
+
+- `gfortran` on `PATH`
+  - Example: `winget install BrechtSanders.WinLibs.POSIX.UCRT`
+- MSYS2 UCRT64 OpenBLAS and ARPACK:
+  - `pacman -S mingw-w64-ucrt-x86_64-openblas mingw-w64-ucrt-x86_64-arpack`
+
+Then run:
+
+```bat
+.\tools\build_msvc.bat
+```
+
+That script configures CMake with:
+
+- `gfortran` as the compiler
+- `MinGW Makefiles` as the generator
+- `CMAKE_PREFIX_PATH=C:/msys64/ucrt64` for MSYS2 system libraries
+
+The gfortran build statically links `libgfortran` and `libgcc` on Windows to
+avoid a UCRT heap conflict observed with `TRIM()` temporaries.
+
+### Windows with Intel ifx (fallback)
+
+Open an Intel oneAPI command prompt, go to the repository root, then run:
+
+```bat
+.\tools\build_ifx.bat
+```
+
+### Legacy Makefile
+
+The legacy build is still available:
+
+```sh
+cd tools
+make install
+```

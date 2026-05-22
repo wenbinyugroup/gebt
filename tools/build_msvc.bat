@@ -1,15 +1,15 @@
 @echo on
+@REM Build GEBT with gfortran (cross-platform, via CMake + MinGW Makefiles).
+@REM Requires gfortran on PATH. Install via:
+@REM   winget install BrechtSanders.WinLibs.POSIX.UCRT
+@REM For system BLAS/LAPACK/ARPACK, install MSYS2 packages:
+@REM   pacman -S mingw-w64-ucrt-x86_64-openblas mingw-w64-ucrt-x86_64-arpack
+@REM Then set CMAKE_PREFIX_PATH below to your MSYS2 ucrt64 lib path.
 
-@REM mkdir build_msvc
-@REM cd build_msvc
-
-cmake -B build_msvc ^
-  -DCMAKE_Fortran_COMPILER=ifx ^
-  -DCMAKE_INSTALL_PREFIX=.. ^
+cmake -B build ^
+  -DCMAKE_Fortran_COMPILER=gfortran ^
   -DCMAKE_VERBOSE_MAKEFILE=1 ^
-  . -G "Visual Studio 17 2022" -T "fortran=ifx"
+  -DCMAKE_PREFIX_PATH=C:/msys64/ucrt64 ^
+  -G "MinGW Makefiles" .
 
-cmake --build build_msvc --config Release
-
-@REM cd ..
-
+cmake --build build

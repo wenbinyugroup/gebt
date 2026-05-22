@@ -19,10 +19,38 @@ extensions = [
     "sphinx.ext.githubpages",
     'sphinx-prompt',
     'sphinx_copybutton',
+    'sphinx_design',
+    'myst_parser',
+]
+
+myst_enable_extensions = [
+    "amsmath",
+    "colon_fence",
+    "dollarmath",
+    "fieldlist",
 ]
 
 templates_path = ['_templates']
 exclude_patterns = []
+
+source_suffix = {
+    '.rst': 'restructuredtext',
+    '.md': 'markdown',
+}
+
+numfig = True
+numfig_format = {
+    'figure': 'Figure %s',
+    'table': 'Table %s',
+    'code-block': 'Listing %s',
+    'section': 'Section'}
+
+
+# -- Options for HTML output -------------------------------------------------
+# https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
+
+html_theme = 'pydata_sphinx_theme'
+html_static_path = ['_static']
 
 html_theme_options = {
     'logo': {
@@ -37,11 +65,3 @@ html_theme_options = {
     'navigation_depth': 4,
     "announcement": "Documentation is under construction.",
 }
-
-
-
-# -- Options for HTML output -------------------------------------------------
-# https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
-
-html_theme = 'pydata_sphinx_theme'
-html_static_path = ['_static']
